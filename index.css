@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+
+  background: url("image.webp") no-repeat center center;
+  background-size: cover;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Overlay sombre pour lisibilité */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: -1;
+  letter-spacing: 1px;
+}
+
+/* Conteneur */
+.container {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(182, 87, 24, 0.3);
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Titre */
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  color: #e66006;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  outline: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+input:focus {
+  border-color: #a970ff;
+  box-shadow: 0 0 8px rgba(169,112,255,0.5);
+}
+
+/* Boutons */
+.btn {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  transition: 0.2s;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
+
+/* Effet glow */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+/* Styles par équipe */
+.opt1 {
+  background: linear-gradient(45deg, #2ed573, #00c853);
+}
+
+.opt2 {
+  background: linear-gradient(45deg, #ff4757, #ff0000);
+}
+
+.opt3 {
+  background: linear-gradient(45deg, #ffa502, #ff7f00);
+}
+
+/* Hover */
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(150, 0, 255, 0.6);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Bebas Neue', sans-serif;
+}

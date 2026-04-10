@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription soirée</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="index.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <h1>LEC NIGHT</h1>
+    <p class="subtitle">Inscrit toi 👇</p>
+
+    <form action="https://formspree.io/f/meepbrpy" method="POST">
+  
+  <input type="text" name="prenom" placeholder="Prénom" required>
+
+  <input type="text" name="nom" placeholder="Nom" required>
+
+  <input type="email" name="email" placeholder="Email" required>
+
+  <input type="hidden" name="choix" id="choix">
+
+  <button type="submit" class="btn opt1" onclick="setChoice('Présent')">
+    ✅ Let's GO je serais là
+  </button>
+
+  <button type="submit" class="btn opt2" onclick="setChoice('Absent')">
+    ❌ Je suis pas interessé
+  </button>
+
+  <button type="submit" class="btn opt3" onclick="setChoice('Peut-être')">
+    🔥 Je suis pas dispo, next time
+  </button>
+
+</form>
+  </div>
+
+  <script>
+    function setChoice(option) {
+      document.getElementById('choix').value = option;
+    }
+  </script>
+
+</body>
+</html>
