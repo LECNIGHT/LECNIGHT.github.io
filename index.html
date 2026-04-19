@@ -2,50 +2,140 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Inscription soirée</title>
+  <title>LEC Watch Party</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link rel="stylesheet" href="index.css">
+  <meta name="theme-color" content="#000814">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>LEC NIGHT</h1>
-    <p class="subtitle">Inscrit toi 👇</p>
+<div class="container">
 
-    <form action="https://formspree.io/f/meepbrpy" method="POST">
-  
-  <input type="text" name="prenom" placeholder="Prénom" required>
+  <h1>WATCH PARTY</h1>
+  <h2>LEC</h2>
 
-  <input type="text" name="nom" placeholder="Nom" required>
-
-  <input type="email" name="email" placeholder="Email" required>
-
-  <input type="hidden" name="choix" id="choix">
-
-  <button type="submit" class="btn opt1" onclick="setChoice('Présent')">
-    ✅ Let's GO je serais là
-  </button>
-
-  <button type="submit" class="btn opt2" onclick="setChoice('Absent')">
-    ❌ Je suis pas interessé
-  </button>
-
-  <button type="submit" class="btn opt3" onclick="setChoice('Peut-être')">
-    🔥 Je suis pas dispo, next time
-  </button>
-
-</form>
+  <div class="info">
+    <span>📅 9 MAI</span>
+    <span>🕒 16H → 21H</span>
   </div>
 
-  <script>
-    function setChoice(option) {
-      document.getElementById('choix').value = option;
-    }
-  </script>
+  <!-- MATCHS -->
+  <div class="matches">
+
+    <h3>Matchs au programme</h3>
+
+    <div class="match">
+      <div class="team">
+        <img src="G2.png">
+        <span>G2</span>
+      </div>
+
+      <span class="vs">VS</span>
+
+      <div class="team">
+        <img src="GX.png">
+        <span>GX</span>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="team">
+        <img src="KOI.png">
+        <span>KOI</span>
+      </div>
+
+      <span class="vs">VS</span>
+
+      <div class="team">
+        <img src="KC.png">
+        <span>KC</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GALERIE -->
+  <div class="gallery">
+    <h3>Ambiance 🔥</h3>
+
+    <div class="gallery-scroll">
+      <img src="IMG6.jpeg">
+      <img src="IMG5.jpeg">
+      <img src="IMG1.jpeg">
+      <img src="IMG2.jpeg">
+      <img src="IMG3.jpeg">
+      <img src="IMG4.jpeg">
+    </div>
+  </div>
+
+  <!-- BAR -->
+  <div class="location">
+    📍 Beluchi's – <span>Gare Du Nord</span>
+  </div>
+
+  <!-- PROGRESSION -->
+  <div class="progress-box">
+    <p>Places réservées</p>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+    <span id="count">0 / 200</span>
+  </div>
+
+  <!-- FORM -->
+  <form action="https://formspree.io/f/meepbrpy" method="POST">
+
+    <input type="text" name="prenom" placeholder="Prénom" required>
+    <input type="text" name="nom" placeholder="Nom" required>
+    <input type="email" name="email" placeholder="Email" required>
+
+    <input type="hidden" name="choix" id="choix">
+
+    <button type="submit" class="btn yes" onclick="setChoice('Présent')">
+      ✅ Je viens
+    </button>
+
+    <button type="submit" class="btn no" onclick="setChoice('Absent')">
+      ❌ Je viens pas
+    </button>
+
+    <button type="submit" class="btn maybe" onclick="setChoice('Peut-être')">
+      🔥 Peut-être
+    </button>
+
+  </form>
+
+</div>
+
+<script>
+function setChoice(option) {
+  document.getElementById('choix').value = option;
+
+  let current = parseInt(localStorage.getItem("count")) || 0;
+
+  if(option === "Présent") {
+    current++;
+    localStorage.setItem("count", current);
+  }
+
+  updateBar();
+}
+
+function updateBar() {
+  let max = 200;
+  let current = parseInt(localStorage.getItem("count")) || 0;
+
+  let percent = (current / max) * 100;
+
+  document.getElementById("progress").style.width = percent + "%";
+  document.getElementById("count").innerText = current + " / " + max;
+}
+
+updateBar();
+</script>
 
 </body>
 </html>
