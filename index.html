@@ -17,13 +17,17 @@
   <h1>WATCH PARTY</h1>
   <h2>LEC</h2>
 
+  <!-- 🔥 BADGE GRATUIT -->
+  <div class="free-badge">
+    🎟️ INSCRIPTION GRATUITE
+  </div>
+
   <div class="info">
     <span>📅 9 MAI</span>
     <span>🕒 16H → 21H</span>
   </div>
 
   <div class="matches">
-
     <h3>Matchs au programme</h3>
 
     <div class="match">
@@ -49,7 +53,6 @@
         <span>KC</span>
       </div>
     </div>
-
   </div>
 
   <div class="gallery">
@@ -79,7 +82,6 @@
 
   <!-- FORM -->
   <form>
-
     <input type="text" name="prenom" placeholder="Prénom" required>
     <input type="text" name="nom" placeholder="Nom" required>
     <input type="email" name="email" placeholder="Email" required>
@@ -87,7 +89,7 @@
     <input type="hidden" name="choix" id="choix">
 
     <button type="button" class="btn yes" onclick="setChoice('Présent')">
-      ✅ Je viens
+      ✅ Je viens (gratuit)
     </button>
 
     <button type="button" class="btn no" onclick="setChoice('Absent')">
@@ -97,7 +99,6 @@
     <button type="button" class="btn maybe" onclick="setChoice('Peut-être')">
       🔥 Peut-être
     </button>
-
   </form>
 
 </div>
@@ -107,7 +108,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
 <script>
-  // 🔥 CONFIG FIREBASE (REMPLACE PAR TES INFOS)
   const firebaseConfig = {
     apiKey: "AIzaSyBFArF1bSDDoDvPCke4bG-SYnfFvIzMZ2A",
     authDomain: "watchpartylec.firebaseapp.com",
@@ -124,7 +124,6 @@
 
   const MAX_PLACES = 200;
 
-  // 🧠 ID unique utilisateur (anti double vote)
   let userId = localStorage.getItem("userId");
   if (!userId) {
     userId = crypto.randomUUID();
@@ -133,7 +132,6 @@
 
   let hasVoted = localStorage.getItem("hasVoted") === "true";
 
-  // ➕ vote
   function setChoice(option) {
     document.getElementById('choix').value = option;
 
@@ -167,10 +165,8 @@
     });
   }
 
-  // 📡 update live
   counterRef.on("value", (snapshot) => {
     let current = snapshot.val() || 0;
-
     let percent = (current / MAX_PLACES) * 100;
 
     document.getElementById("progress").style.width = percent + "%";
