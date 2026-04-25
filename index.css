@@ -87,7 +87,9 @@ h2 {
   height: 60px;
   object-fit: contain;
   display: block;
-  filter: none;
+
+  filter: none !important;
+  box-shadow: none !important;
 }
 
 .team span {
